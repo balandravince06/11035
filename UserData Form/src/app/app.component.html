@@ -1,0 +1,68 @@
+  <div class="left">
+    <div class="">
+      <form (ngSubmit)="submit()" #f="ngForm">
+        <div id="user-data" ngModelGroup="userData" #userData="ngModelGroup">
+          <div class="form-group">
+            <label for="username">Username: </label>
+            <input type="text" id="username" class="form-control" ngModel name="username" required username minlength="8">
+            <br>
+            <label for="password">Password: </label>
+            <input type="password" id="password" class="form-control" ngModel name="password" required password minlength="8">
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail: </label>
+            <input type="email" id="email" class="form-control" ngModel name="email" required email>
+            <br>
+            <label for="phone">Phone: </label>
+            <input type="phone" id="phone" class="form-control" ngModel name="phone" required phone>
+          </div>
+        </div>
+        <div id="otherInfo" ngModelGroup="otherInfo" #otherInfo="ngModelGroup">
+          <div class="form-group">
+            <label for="secret">Secret Questions: </label>
+          <select id="secret" class="form-control" [ngModel]="defaultQuestion" name="secret" required secret>
+            <option value="city">What city you were born?</option>
+            <option value="color">What is your favorite color?</option>
+            <option value="hero">Who is your favorite hero?</option>
+            <option value="number">What is your favorite number?</option>
+          </select>
+          </div>
+          <div class="form-group">
+            <label for="answer">Answer: </label>
+            <input type="text" id="answer" class="form-control" ngModel name="answer" required answer>
+          </div>
+            <div class="form-group">
+              <label for="gender">Gender: </label>
+              <select id="gender" class="form-control" [ngModel]="defaultGender" name="gender" required gender>
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="job">Job: </label>
+              <input type="text" id="job" class="form-control" ngModel name="job" required job>
+              <br>
+              <label for="description">Job Description: </label>
+              <textarea name="description" id="description" cols="105" rows="5" class="form-control" ngModel name="description" required description></textarea>
+              <br>
+              <label for="salary">Salary: </label>
+              <input type="text" id="salary" class="form-control" ngModel name="salary" required salary>
+            </div>
+            <button [disabled] ="!f.valid" class="btn btn-primary" type="submit">Submit</button>
+          </div>
+      </form>
+    </div>
+  </div>
+  <div class="right" *ngIf="submitted">
+      <h4>Submitted Data</h4>
+      <p>Username: {{ user.username }}</p>
+      <p>Password: {{ user.password }}</p>
+      <p>E-mail: {{ user.email }}</p>
+      <p>Phone: {{ user.phone }}</p>
+      <p>Secret Question: {{ user.secret }}</p>
+      <p>Answer: {{ user.answer }}</p>
+      <p>Gender: {{ user.gender }}</p>
+      <p>Job: {{ user.job }}</p>
+      <p>Job Description: {{ user.description }}</p>
+      <p>Salary: {{ user.salary }}</p>
+  </div>
